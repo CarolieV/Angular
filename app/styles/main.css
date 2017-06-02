@@ -7,23 +7,29 @@ html {
      height: 100%; /* makes sure our HTML takes up 100% of the browser window */
      font-size: 100%;
  }
- 
+
  body {
-     font-family: 'Open Sans'; /* sets our font to the "Open Sans" typeface */
-     color: white;             /* sets the text color to white */
-     min-height: 100%;         /* says the height of the body must be, at minimum, 100% of the window */
+      background-image: url(../assets/images/blurred_backgrounds/blur_bg_3.jpg);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center center;
+      background-size: cover;
+      font-family: 'Open Sans'; /* sets our font to the "Open Sans" typeface */
+      color: white;             /* sets the text color to white */
+      min-height: 100%;         /* says the height of the body must be, at minimum, 100% of the window */
+      padding-bottom: 200px;
  }
- 
+
  body.landing {
      background-color: rgb(58,23,63); /* sets the background color to an RGB value (see below) */
  }
- 
+
  .navbar {
      position: relative;
      padding: 0.5rem;
      background-color: rgba(101,18,95,0.5);
  }
- 
+
  .navbar .logo {
      position: relative; /* positioning will be explained in a resource */
      left: 2rem;
@@ -39,7 +45,7 @@ html {
      /* #3 */
      text-decoration: none;
  }
- 
+
  .links-container .navbar-link {
      display: table-cell;
      position: relative;
@@ -57,7 +63,7 @@ html {
      text-decoration: none;
      cursor: pointer;
  }
- 
+
    /* #5 */
  .links-container .navbar-link:hover {
       :active {
@@ -95,7 +101,7 @@ html {
      -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
  }
- 
+
  .point {
      display: table-cell;
      position: relative;
@@ -103,11 +109,11 @@ html {
      padding: 2rem;
      text-align: center;
  }
- 
+
  .point .point-title {
      font-size: 1.25rem;
  }
- 
+
  .ion-music-note,
  .ion-radio-waves,
  .ion-iphone {
@@ -118,7 +124,7 @@ html {
  @media (min-width: 640px) {
     html { font-size: 112%; }
  }
- 
+
  /* Large screens (1024px) */
  @media (min-width: 1024px) {
    html { font-size: 120%; }
@@ -130,7 +136,7 @@ html {
 .container.narrow {
      max-width: 56rem;
  }
- 
+
  /* Medium screens (640px) */
  @media (min-width: 640px) {
      html { font-size: 112%; }
@@ -144,7 +150,7 @@ html {
      .column.half { width: 50%; }
      .column.third { width: 33.3%; }
      .column.fourth { width: 25%; }
-     .column.flow-opposite { float: right; }  
+     .column.flow-opposite { float: right; }
  }
 clearfix::before,
 .clearfix::after {
