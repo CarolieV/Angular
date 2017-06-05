@@ -14,9 +14,9 @@
        <tr class="album-view-song-item" ng-mouseover="hovered = true" ng-mouseleave="hovered = false">
          <tr class="album-view-song-item" ng-repeat="song in collection.songs">
            <td class="song-item-number" >{{ song.number }}
-                <span ng-show="!playing && !hovered">1</span>
-                <a class="album-song-button" ng-show="!playing && hovered"><span class="ion-play"></span></a>
-                <a class="album-song-button" ng-show="playing"><span class="ion-pause"></span></a>
+                <span ng-show="!playSong(); && !hovered">1</span>
+                <a class="album-song-button" ng-show="hovered && !playSong();" ng-click="album.songPlayer.play(song)"><span class="ion-play"></span></a>
+                <a class="album-song-button" ng-show="playSong();" ng-click="album.songPlayer.pause(song)"><span class="ion-pause"></span></a>
             </td>
              <td class="song-item-title">Blue{{ song.title }}</td>
              <td class="song-item-duration">3:31{{ song.length }}</td>
