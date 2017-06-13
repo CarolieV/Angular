@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+
+=======
+>>>>>>> 7df7c5dfe91e21cb05791442cec9615315a1a28c
 (function() {
   function seekBar($document) {
       var calculatePercent = function(seekBar, event) {
@@ -12,7 +16,13 @@
          templateUrl: '/templates/directives/seek_bar.html',
          replace: true,
          restrict: 'E',
+<<<<<<< HEAD
+         scope: {
+                  onChange: '&'
+              },
+=======
                   scope: { },
+>>>>>>> 7df7c5dfe91e21cb05791442cec9615315a1a28c
                   link: function(scope, element, attributes) {
                     scope.value = 0;
                                 scope.max = 100;
@@ -31,18 +41,49 @@
                                     return {left: percentString()};
                     }
                 };
+<<<<<<< HEAD
+
+var seekBar = $(element);
+
+ attributes.$observe('value', function(newValue) {
+     scope.value = newValue;
+ });
+
+ attributes.$observe('max', function(newValue) {
+     scope.max = newValue;
+ });
                 scope.onClickSeekBar = function(event) {
                     var percent = calculatePercent(seekBar, event);
                     scope.value = percent * scope.max;
+                    notifyOnChange(scope.value);
+
+=======
+                scope.onClickSeekBar = function(event) {
+                    var percent = calculatePercent(seekBar, event);
+                    scope.value = percent * scope.max;
+>>>>>>> 7df7c5dfe91e21cb05791442cec9615315a1a28c
  };
 
                 scope.trackThumb = function() {
                   $document.bind('mousemove.thumb', function(event) {
                     var percent = calculatePercent(seekBar, event);
+<<<<<<< HEAD
+                    notifyOnChange(scope.value);
+
+=======
+>>>>>>> 7df7c5dfe91e21cb05791442cec9615315a1a28c
 
                 scope.$apply(function() {
                   scope.value = percent * scope.max;
          });
+<<<<<<< HEAD
+         var notifyOnChange = function(newValue) {
+              if (typeof scope.onChange === 'function') {
+                  scope.onChange({value: newValue});
+              }
+          };
+=======
+>>>>>>> 7df7c5dfe91e21cb05791442cec9615315a1a28c
      });
 
      $document.bind('mouseup.thumb', function() {

@@ -1,6 +1,5 @@
 (function() {
-<<<<<<< HEAD
-    function SongPlayer(Fixtures) {
+function SongPlayer($rootScope, Fixtures) {
       var SongPlayer = {};
 
       var currentAlbum = Fixtures.getAlbum();
@@ -14,46 +13,43 @@
      return currentAlbum.songs.indexOf(song);
  };
           SongPlayer.SongPlayer.currentSong = null;
-=======
+          /**
+ * @desc Current playback time (in seconds) of currently playing song
+ * @type {Number}
+ */
+ SongPlayer.currentTime = null;
+
      function SongPlayer() {
           var SongPlayer = {};
           var currentSong = null;
->>>>>>> 7fccde712c8a25b84c7a4f228e0d1998dce66791
           /**
  * @desc Buzz object audio file
  * @type {Object}
  */
        var currentBuzzObject = null;
 
-<<<<<<< HEAD
-=======
        SongPlayer.play = function(song) {
            if (currentSong !== song) {
->>>>>>> 7fccde712c8a25b84c7a4f228e0d1998dce66791
              /**
 * @function setSong
 * @desc Stops currently playing song and loads new audio file as currentBuzzObject
 * @param {Object} song
 */
-<<<<<<< HEAD
-          SongPlayer.SongPlayer.currentSong = null;
-
-             var setSong = function(song) {
-                if (currentBuzzObject) {
-                  SongPlayer.stopSong();
-=======
              var setSong = function(song) {
                 if (currentBuzzObject) {
                   currentBuzzObject.stop();
                   currentSong.playing = null;
->>>>>>> 7fccde712c8a25b84c7a4f228e0d1998dce66791
                 }
 
                 currentBuzzObject = new buzz.sound(song.audioUrl, {
                   formats: ['mp3'],
                   preload: true
                 });
-
+                currentBuzzObject.bind('timeupdate', function() {
+                         $rootScope.$apply(function() {
+                             SongPlayer.currentTime = currentBuzzObject.getTime();
+                         });
+                     });
                   setSong(song);
 };
 
@@ -62,7 +58,6 @@
            }
      };
 
-<<<<<<< HEAD
      /**
   * @function play
   * @desc Plays the current song
@@ -85,8 +80,6 @@
  * @desc Pause current song
  * @param {Object} song
  */
-=======
->>>>>>> 7fccde712c8a25b84c7a4f228e0d1998dce66791
   SongPlayer.pause = function(song) {
      currentBuzzObject.pause();
      song.playing = false;
@@ -98,7 +91,7 @@
           var playSong = function(song) {
             if (currentBuzzObject) {
               currentBuzzObject.play();
-<<<<<<< HEAD
+
               SongPlayer.currentSong.playing = true;
             }
           }
@@ -128,28 +121,49 @@
              setSong(song);
              playSong(song);
          }
+
        }
        SongPlayer.stopSong = function () {
          currentBuzzObject.stop();
          SongPlayer.currentSong.playing = null;
        }
+       /**
+* @function setCurrentTime
+* @desc Set current time (in seconds) of currently playing song
+* @param {Number} time
+*/
+SongPlayer.setCurrentTime = function(time) {
+    if (currentBuzzObject) {
+        currentBuzzObject.setTime(time);
+    }
+};
  };
 
-=======
-              currentSong.playing = true;
-            }
-          }
-    };
->>>>>>> 7fccde712c8a25b84c7a4f228e0d1998dce66791
 
           return SongPlayer;
      }
+     /**
+      * @function setCurrentTime
+      * @desc Set current time (in seconds) of currently playing song
+      * @param {Number} time
+      */
+      SongPlayer.setCurrentTime = function(time) {
+          if (currentBuzzObject) {
+              currentBuzzObject.setTime(time);
+          }
+      };
+      /**
+       * @function setVolume
+       * @desc set and change the current volume of the song
+       * @param {Object} song
+       */
+       SongPlayer.volume = sound.getVolume();
 
+       SongPlayer.setVolume = function(song) {
+          mySound.setVolume(90);
+       }
      angular
          .module('blocJams')
-<<<<<<< HEAD
-         .factory('SongPlayer', ['Fixtures', SongPlayer]);
-=======
-         .factory('SongPlayer', SongPlayer);
->>>>>>> 7fccde712c8a25b84c7a4f228e0d1998dce66791
+        .factory('SongPlayer', ['$rootScope', 'Fixtures', SongPlayer]);
+
  })();
