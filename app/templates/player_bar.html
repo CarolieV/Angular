@@ -1,4 +1,5 @@
 <section class="player-bar" ng-controller="PlayerBarCtrl as playerBar">
+  <seek-bar value="{{ playerBar.songPlayer.currentTime }}" max="{{ playerBar.songPlayer.currentSong.duration }}"></seek-bar>
      <div class="container">
          <div class="control-group main-controls">
            <a class="previous" ng-click="playerBar.songPlayer.previous()">
@@ -19,16 +20,16 @@
              </a>
          </div>
          <div class="control-group currently-playing">
-             <h2 class="song-name">{{ song.name }}</h2>
+             <h2 class="song-name" {{ song.name }}></h2>
              <h2 class="artist-song-mobile"></h2>
-             <h3 class="artist-name">{{ artist.name }}</h3>
+             <h3 class="artist-name"{{ artist.name }}></h3>
              <div class="seek-control">
                  <div class="seek-bar">
                      <div class="fill"></div>
                      <div class="thumb"></div>
                  </div>
-                 <div class="current-time"></div>
-                 <div class="total-time">{{ total.song.time }}</div>
+                 <div class="current-time" {{ current-time.seconds }}></div>
+                 <div class="total-time"{{ total.song.time }}></div>
              </div>
          </div>
          <div class="control-group volume">
